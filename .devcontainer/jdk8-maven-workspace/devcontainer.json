@@ -1,0 +1,53 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.194.0/containers/java-8
+{
+	"name": "Java 8",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": {
+			"INSTALL_MAVEN": "true",
+			"INSTALL_GRADLE": "false",
+			"NODE_VERSION": "lts/*"
+		}
+	},
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": {
+		"java.home": "/docker-java-home",
+		"java.import.gradle.java.home": "/usr/local/sdkman/candidates/java/current",
+		"java.configuration.runtimes": [{
+			"default": true,
+			"name": "JavaSE-1.8",
+			"path": "/usr/local/sdkman/candidates/java/current"
+		}]
+	},
+	
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"ms-ceintl.vscode-language-pack-zh-hans", // 中文包
+		"gabrielbb.vscode-lombok", // Lombok插件
+		"vscjava.vscode-java-pack", // 微软Java插件合集
+		"vscjava.vscode-java-dependency", // 微软Java依赖分析插件
+		"vscjava.vscode-maven", // 微软Maven插件
+		"vscjava.vscode-spring-initializr", // 微软Spring插件
+		"github.copilot", // github 智能代码提示
+		"pivotal.vscode-boot-dev-pack" // Prvotal(vmware) SpringBoot插件合集
+	],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "java -version",
+
+	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode",
+
+	// 本地硬盘缓存加速构建
+	// https://code.visualstudio.com/docs/remote/containers-advanced#_adding-another-local-file-mount
+	"mounts": [
+		"source=/root/.m2,target=/home/vscode/.m2,type=bind,consistency=cached", // Maven第三方依赖Jar包本地缓存
+		// "source=/root/.ssh/id_rsa_luckuu,target=/home/vscode/.ssh/id_rsa,type=bind,consistency=cached"
+		"source=/root/.vscode-server/extensions,target=/home/vscode/.vscode-server/extensions,type=bind,consistency=cached" // VSCode 插件本地缓存
+	  ]
+}
