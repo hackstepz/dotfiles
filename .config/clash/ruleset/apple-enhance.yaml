@@ -1,0 +1,9 @@
+payload:
+  - '+.push.apple.com'
+  - '+.apple.com'
+  - '*.*.apple.com'
+  - 'weather-data.apple.com'
+  - 'weather.com'
+  - '+.weather.com'
+  - '+.appcenter.ms'
+  - '+.googleapis.com'
