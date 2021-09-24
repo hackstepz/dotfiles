@@ -43,6 +43,15 @@
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode",
 
+	// 增加时区环境变量确保容器内时间统一
+	// https://code.visualstudio.com/docs/remote/containers-advanced#_adding-environment-variables
+	"containerEnv": {
+		"TZ": "Asia/Shanghai"
+	},
+	"remoteEnv": {
+		"TZ": "Asia/Shanghai"
+	},
+
 	// 本地硬盘缓存加速构建
 	// https://code.visualstudio.com/docs/remote/containers-advanced#_adding-another-local-file-mount
 	"mounts": [
